@@ -4,81 +4,91 @@
 
 using namespace std;
 
+template <typename T>
+void operation(T first, T second)
+{
+	T result;
+	char oper;
+	bool label2 = true;
+	while (label2)
+	{
+		cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸ÑŽ: 1)+, 2)-, 3)*, 4)/, 5)= ";
+		cin >> oper;
+		switch (oper)
+		{
+		case '1':
+			result = *(first + second);
+			cout << "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚: " << result << endl;
+			label2 = false;
+			break;
+		case '2':
+			result = *(first - second);
+			cout << "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚: " << result << endl;
+			label2 = false;
+			break;
+		case '3':
+			result = *(first * second);
+			cout << "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚: " << result << endl;
+			label2 = false;
+			break;
+		case '4':
+			result = *(first / second);
+			cout << "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚: " << result << endl;
+			label2 = false;
+			break;
+		case '5':
+			if (first == second)
+			{
+				cout << first << " = " << second << endl;
+			}
+			else
+			{
+				cout << first << " != " << second << endl;
+			}
+			label2 = false;
+			break;
+		default:
+			cout << "ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ Ð²Ð²Ð¾Ð´!" << endl;
+			label2 = true;
+			break;
+		}
+	}
+}
+
 int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	FazzyNumber p1, p2, p3;
-	Fraction p4, p5, p6;
+	FazzyNumber p1, p2;
+	Fraction p3, p4;
 
 	bool flag = true;
 	while (flag)
 	{
-		char mode, oper;
+		char mode;
 		bool label1 = true;
 		while (label1)
 		{
-			cout << "Âûáåðèòå ðåæèì ðàáîòû ïðîãðàììû: 1)íåÿâíûå ÷èñëà, 2)äåñÿòè÷íûå äðîáè ";
+			cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ñ€ÐµÐ¶Ð¸Ð¼ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñ‹: 1)Ð½ÐµÑÐ²Ð½Ñ‹Ðµ Ñ‡Ð¸ÑÐ»Ð°, 2)Ð´ÐµÑÑÑ‚Ð¸Ñ‡Ð½Ñ‹Ðµ Ð´Ñ€Ð¾Ð±Ð¸ ";
 			cin >> mode;
 			switch (mode)
 			{
 			case '1':
-				cin >> p1 >> p2;
+				cout << "1) "; cin >> p1;
+				cout << "2) "; cin >> p2;
+				operation<FazzyNumber>(p1, p2);
 				label1 = false;
 				break;
 			case '2':
-				cin >> p4 >> p5;
+				cout << "1) "; cin >> p3;
+				cout << "2) "; cin >> p4;
+				operation<Fraction>(p3, p4);
 				label1 = false;
 				break;
 			default:
-				cout << "Íåâåðíûé ââîä!" << endl;
+				cout << "ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ Ð²Ð²Ð¾Ð´!" << endl;
 				label1 = true;
-				break;
-			}
-		}
-
-		bool label2 = true;
-		while (label2)
-		{
-			cout << "Âûáåðèòå îïåðàöèþ: 1)+, 2)-, 3)*, 4)/, 5)= ";
-			cin >> oper;
-			switch (oper)
-			{
-			case '1':
-				p3 = *(p1 + p2);
-				cout << "Ðåçóëüòàò: " << p3 << endl;
-				label2 = false;
-				break;
-			case '2':
-				p3 = *(p1 - p2);
-				cout << "Ðåçóëüòàò: " << p3 << endl;
-				label2 = false;
-				break;
-			case '3':
-				p3 = *(p1 * p2);
-				cout << "Ðåçóëüòàò: " << p3 << endl;
-				label2 = false;
-				break;
-			case '4':
-				p3 = *(p1 / p2);
-				cout << "Ðåçóëüòàò: " << p3 << endl;
-				label2 = false;
-				break;
-			case '5':
-				if (p1 == p2)
-				{
-					cout << p1 << " = " << p2 << endl;
-				}
-				else
-				{
-					cout << p1 << " != " << p2 << endl;
-				}
-				label2 = false;
-				break;
-			default:
-				cout << "Íåâåðíûé ââîä!" << endl;
-				label2 = true;
 				break;
 			}
 		}
@@ -87,12 +97,12 @@ int main()
 		bool label3 = true;
 		while (label3)
 		{
-			cout << "Æåëàåòå íà÷àòü çàíîâî èëè âûéòè? 1 - çàíîâî, 2 - âûéòè ";
+			cout << "Ð–ÐµÐ»Ð°ÐµÑ‚Ðµ Ð½Ð°Ñ‡Ð°Ñ‚ÑŒ Ð·Ð°Ð½Ð¾Ð²Ð¾ Ð¸Ð»Ð¸ Ð²Ñ‹Ð¹Ñ‚Ð¸? 1 - Ð·Ð°Ð½Ð¾Ð²Ð¾, 2 - Ð²Ñ‹Ð¹Ñ‚Ð¸ ";
 			cin >> choice;
 			switch (choice)
 			{
 			default:
-				cout << "Íåâåðíûé ââîä!" << endl;
+				cout << "ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ Ð²Ð²Ð¾Ð´!" << endl;
 				label3 = true;
 				break;
 			case '1':
